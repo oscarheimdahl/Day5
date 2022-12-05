@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#speed {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 3rem;
+}
+
+#grid {
+  margin: 0 auto;
+  outline: 10px solid black;
+  /* box-sizing: border-box; */
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  align-items: flex-start;
+  height: 100%;
+  width: min-content;
+}
+
+.pixel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background-color: #753711;
+  color: white;
+  outline: 1px solid #ffffff;
+  transition: opacity 100ms;
+}
