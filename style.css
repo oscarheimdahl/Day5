@@ -32,8 +32,8 @@ body {
   justify-content: center;
   align-items: center;
   aspect-ratio: 1 / 1;
-  background-color: #753711;
+  background-color: #eea26c;
   color: white;
-  outline: 1px solid #ffffff;
+  /* outline: 1px solid #ffffff; */
   transition: opacity 100ms;
 }
