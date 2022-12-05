@@ -40,11 +40,19 @@ document.addEventListener('mousemove', (e) => {
     });
   }
 
-  async function buildGrid() {
+  function buildGrid() {
+    for (let i = 0; i < highestStack * gridWidth; i++) {
+      const pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      pixel.style.height = `calc(100vh / ${highestStack})`;
+      grid.appendChild(pixel);
+    }
+  }
+
+  async function draw() {
     for (let i = 0; i < frames.length; i++) {
-      grid.innerHTML = '';
-      [...frames[i]].forEach((pixel) => {
-        buildPixel(pixel);
+      [...frames[i]].forEach((pixel, i) => {
+        buildPixel(i, pixel);
       });
       await delay(frameRate);
     }
@@ -54,17 +62,18 @@ document.addEventListener('mousemove', (e) => {
     await new Promise((res) => setTimeout(() => res(1), time));
   }
 
-  function buildPixel(value) {
-    const pixel = document.createElement('div');
-    pixel.style.height = `calc(100vh / ${highestStack})`;
-    pixel.className = 'pixel';
-    if (value !== ' ') pixel.innerText = value;
-    else pixel.style.background = 'white';
-    grid.appendChild(pixel);
+  function buildPixel(i, value) {
+    const pixel = grid.childNodes[i];
+    if (value !== ' ') {
+      pixel.innerText = value;
+      pixel.className = 'pixel';
+    } else pixel.className = 'pixel hidden';
   }
 
   await readFrames();
   findHighestStack();
   squareSmallerFrames();
   buildGrid();
+  grid.style.opacity = 1;
+  draw();
 })();

@@ -17,6 +17,7 @@ body {
 }
 
 #grid {
+  opacity: 0;
   margin: 0 auto;
   outline: 10px solid black;
   /* box-sizing: border-box; */
@@ -34,6 +35,9 @@ body {
   aspect-ratio: 1 / 1;
   background-color: #eea26c;
   color: white;
-  /* outline: 1px solid #ffffff; */
-  transition: opacity 100ms;
+  outline: 1px solid #ffffff;
+}
+
+.pixel.hidden {
+  opacity: 0;
 }
